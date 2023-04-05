@@ -35,11 +35,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvQuote"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="32dp"
         app:cardCornerRadius="16dp"
-        app:layout_constraintBottom_toTopOf="@id/iv_home"
+        app:layout_constraintBottom_toTopOf="@id/ivHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubtitle">
@@ -52,6 +53,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvQuote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/unna_bold"
@@ -68,6 +70,7 @@
                 app:dividerColor="@color/white" />
 
             <TextView
+                android:id="@+id/tvAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -83,18 +86,18 @@
     </androidx.cardview.widget.CardView>
 
     <ImageButton
-        android:id="@+id/iv_share"
+        android:id="@+id/ivShare"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_share"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/iv_home"
+        app:layout_constraintEnd_toStartOf="@id/ivHome"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/iv_home"
+        android:id="@+id/ivHome"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -105,7 +108,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/iv_like"
+        android:id="@+id/ivLike"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -113,7 +116,7 @@
         android:src="@drawable/ic_heart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_home" />
+        app:layout_constraintStart_toEndOf="@id/ivHome" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,12 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <!-- Gradient backgrounds -->
+    <color name="bg_color_start">#2C5364</color>
+    <color name="bg_color_end">#0F2027</color>
+    <color name="bg_card_color_start">#bdc3c7</color>
+    <color name="bg_card_color_end">#2c3e50</color>
+
     <color name="textColor">#FFFFFFFF</color>
 
 
