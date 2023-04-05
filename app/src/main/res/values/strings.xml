@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Memento</string>
+    <string name="title_app">Memento</string>
+    <string name="quotes">Citas</string>
+    <string name="menu">Menu</string>
+</resources>
