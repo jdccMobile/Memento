@@ -82,31 +82,34 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/iv_share"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_share"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/iv_home"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/iv_home"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/iv_like"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_heart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
