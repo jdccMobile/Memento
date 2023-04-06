@@ -3,18 +3,16 @@ package com.jdccmobile.memento.ui.quotes
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Observer
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.jdccmobile.memento.R
-import com.jdccmobile.memento.databinding.ActivityMainBinding
+import com.jdccmobile.memento.databinding.ActivityQuoteBinding
 import com.jdccmobile.memento.ui.menu.MenuActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class QuotesActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "jose d"
@@ -22,25 +20,14 @@ class MainActivity : AppCompatActivity() {
 
     private var isFavourite = false // todo quitar y guardar en data store
 
-    private val viewModel by viewModels<MainViewModel>()
-
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityQuoteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityQuoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initQuote()
         initListener()
-        viewModel.getQuoteFirestore()
-        quoteUpdateObserver()
-    }
-
-//     Observer is waiting for viewModel to update our UI
-    private fun quoteUpdateObserver() {
-        viewModel.quotesModel.observe(this, Observer { quote ->
-            binding.tvQuote.text = quote.quote
-            binding.tvAuthor.text = quote.author
-        })
     }
 
 
@@ -48,8 +35,16 @@ class MainActivity : AppCompatActivity() {
         binding.ivShare.setOnClickListener { } // Todo añadir compartir
         binding.ivHome.setOnClickListener { navigateToMenu() }
         binding.ivLike.setOnClickListener { changeHeartColor() }
-//        binding.cvQuote.setOnClickListener { viewModel.getQuoteFirestore() } // // Setup the button in our fragment to call getUpdatedText method in viewModel
     }
+
+
+    private fun initQuote() {
+        val quote = intent.getStringExtra("quote")
+        val author = intent.getStringExtra("author")
+        binding.tvQuote.text = quote
+        binding.tvAuthor.text = author
+    }
+
 
     private fun navigateToMenu() {
         val intent = Intent(this, MenuActivity::class.java)
@@ -70,4 +65,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+
+
+
+//     Observer is waiting for viewModel to update our UI
+//    private fun quoteUpdateObserver() {
+//        viewModel.quotesModel.observe(this, Observer { quote ->
+//            binding.tvQuote.text = quote.quote
+//            binding.tvAuthor.text = quote.author
+//        })
+//    }
 

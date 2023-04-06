@@ -28,4 +28,12 @@
         <item name="android:statusBarColor">@color/bg_color_start</item>
         <!-- Customize your theme here. -->
     </style>
+
+<!--    Splash screen-->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/bg_color_start</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.Memento</item>
+    </style>
 </resources>
