@@ -1,6 +1,6 @@
 package com.jdccmobile.memento.data.local
 
-import com.jdccmobile.memento.data.QuotesModel
+import com.jdccmobile.memento.data.model.QuotesModel
 
 class QuotesProvider {
     companion object{

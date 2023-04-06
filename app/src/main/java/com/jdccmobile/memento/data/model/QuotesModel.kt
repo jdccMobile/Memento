@@ -1,4 +1,4 @@
-package com.jdccmobile.memento.data
+package com.jdccmobile.memento.data.model
 
 data class QuotesModel(
     val quote: String = "",
