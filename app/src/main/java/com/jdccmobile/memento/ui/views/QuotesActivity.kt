@@ -1,22 +1,14 @@
-package com.jdccmobile.memento.ui.quotes
+package com.jdccmobile.memento.ui.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.Observer
 import com.jdccmobile.memento.R
 import com.jdccmobile.memento.databinding.ActivityQuoteBinding
-import com.jdccmobile.memento.ui.menu.MenuActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class QuotesActivity : AppCompatActivity() {
-
-    companion object {
-        const val TAG = "jose d"
-    }
 
     private var isFavourite = false // todo quitar y guardar en data store
 
