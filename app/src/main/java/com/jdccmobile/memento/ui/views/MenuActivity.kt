@@ -1,4 +1,4 @@
-package com.jdccmobile.memento.ui.menu
+package com.jdccmobile.memento.ui.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

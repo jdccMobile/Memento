@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_activity_gradient"
-    tools:context=".ui.menu.MenuActivity">
+    tools:context=".ui.views.MenuActivity">
 
     <TextView
         android:id="@+id/tvTitle"
