@@ -49,6 +49,7 @@
             android:layout_marginBottom="32dp">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cvSettings"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_marginEnd="16dp"
@@ -81,6 +82,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cvFavorites"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_marginEnd="16dp"

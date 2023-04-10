@@ -1,4 +1,4 @@
-package com.jdccmobile.memento.data.network
+package com.jdccmobile.memento.data.firebase
 
 import com.google.firebase.messaging.FirebaseMessagingService
 

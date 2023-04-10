@@ -2,6 +2,8 @@ package com.jdccmobile.memento.data.preferences
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -46,6 +48,26 @@ class DataStoreRepositoryImp @Inject constructor(
     override suspend fun getInt(key: String): Int? {
         return try {
             val preferencesKey = intPreferencesKey(key)
+            val preferences = context.dataStore.data.first()
+            return preferences[preferencesKey]
+        } catch (e: Exception){
+            e.printStackTrace()
+            null
+        }
+    }
+
+    override suspend fun putBool(key: String, value: Boolean) {
+        val preferencesKey = booleanPreferencesKey(key)
+        context.dataStore.edit { preferences ->
+            preferences[preferencesKey] = value
+        }
+        Log.i(SplashActivity.TAG, "Nueva configuracion $value")
+        Toast.makeText(context, "Configuración cambiada", Toast.LENGTH_SHORT).show()
+    }
+
+    override suspend fun getBool(key: String): Boolean? {
+        return try {
+            val preferencesKey = booleanPreferencesKey(key)
             val preferences = context.dataStore.data.first()
             return preferences[preferencesKey]
         } catch (e: Exception){

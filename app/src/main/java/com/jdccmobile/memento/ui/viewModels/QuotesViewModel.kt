@@ -29,7 +29,7 @@ class QuotesViewModel @Inject constructor(
     val quotesModel = MutableLiveData<QuotesModel>()
     private val db = Firebase.firestore
 
-    fun getQuoteFirestore() {
+    fun getQuoteFirestore() { // TODO PASAR FIREBASE A LA CAPA DE DATA Y LA FUNCION DE OBTENER UNA CITA ALEATORIA A DOMAIN
         db.collection(STOICISM_COLL).get()
             .addOnSuccessListener { collection ->
                 val randomPos = (0 until collection.size()).random()
