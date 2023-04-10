@@ -3,4 +3,9 @@
     <string name="title_app">Memento</string>
     <string name="quotes">Citas</string>
     <string name="menu">Menu</string>
+    <string name="settings">Ajustes</string>
+    <string name="favorites">Favoritas</string>
+    <string name="quotes_to_show">Citas a mostrar</string>
+    <string name="stoics">Estoicas</string>
+    <string name="coming_soon">Próximamente</string>
 </resources>
