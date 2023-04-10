@@ -9,6 +9,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.jdccmobile.memento.R
+import com.jdccmobile.memento.databinding.ActivityQuoteBinding
+import com.jdccmobile.memento.databinding.ActivitySplashBinding
 import com.jdccmobile.memento.ui.viewModels.QuotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDateTime
@@ -23,11 +25,13 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private val viewModel by viewModels<QuotesViewModel>()
+    private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         screenSplash.setKeepOnScreenCondition { true }
 
         checkLastDay()

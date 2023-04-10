@@ -8,4 +8,12 @@
     <string name="quotes_to_show">Citas a mostrar</string>
     <string name="stoics">Estoicas</string>
     <string name="coming_soon">Próximamente</string>
+    <string name="enable_notifications">Activar notificaciones</string>
+    <string name="notifications_description">Activa las notificaciones diarias</string>
+    <string name="delete_favorite_quotes">Borrar citas favoritas</string>
+    <string name="delete">Borrar</string>
+    <string name="del_fav_description">Borra todas las citas guardadas ¡Atención! No se podrán recuperar</string>
+    <string name="delete_advise">¿Estas seguro que quieres borrar todas tus citas? No las podrás recuperar en un futuro</string>
+    <string name="cancel">Cancelar</string>
+
 </resources>

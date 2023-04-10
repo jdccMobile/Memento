@@ -1,6 +1,11 @@
-Pantalla de ajustes
-    Cambiar las fuentes
+Pantalla de menu
     Hacer boton de estoicas clicables y cambiar color
+
+Pantalla de ajustes
+    Boton para borrar favoritos
+        panel dialogo para confirmar
+        toast para avisar al usuario que se han borrado todas las citas
+    Switch para activar notificaciones
 
 Pantalla de favoritas
     Room para guardar las citas
@@ -14,3 +19,4 @@ Publicidad en todas las pantallas menos la principal
 
 General
     Definir las fuentes en un estilo general
+    Cambiar el color de los textos a textcolor

@@ -14,8 +14,9 @@
     <color name="bg_color_end">#0F2027</color>
     <color name="bg_card_color_start">#bdc3c7</color>
     <color name="bg_card_color_end">#2c3e50</color>
-
     <color name="textColor">#FFFFFFFF</color>
+    <color name="grey">#CDCDCD</color>
+    <color name="red">#FF0000</color>
 
 
 </resources>
