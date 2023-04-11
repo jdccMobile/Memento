@@ -1,5 +1,6 @@
 Splash screen
     Poner if de que si tarda mas de x tiempo avanze y de error
+    Quitar los runblock para que no bloqueen el hilo principal
 
 Pantalla de menu
     Hacer boton de estoicas clicables y cambiar color
@@ -27,6 +28,7 @@ General
     Cambiar el color de los textos a textcolor
     Impedir la rotacion de la app
     Limpieza de warnings en codigo y layouts
+    Quitar todos los strings harcodeados en el codigo
 
 Subir play store
     mirar aso

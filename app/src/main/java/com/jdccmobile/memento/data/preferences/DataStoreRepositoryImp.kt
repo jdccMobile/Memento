@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.ui.views.SplashActivity
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject

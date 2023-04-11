@@ -1,4 +1,4 @@
-package com.jdccmobile.memento.domain
+package com.jdccmobile.memento.domain.firestore
 
 import android.util.Log
 import com.jdccmobile.memento.data.firebase.FirestoreRepository
@@ -11,9 +11,8 @@ class GetRandomQuoteUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke():QuotesModel? {
-        Log.i(SplashActivity.TAG, "nentro usecase")
+        Log.w(SplashActivity.TAG, "firestore use case")
         val quote: QuotesModel? = firestoreRepository.getRandomQuote()
-        Log.i(SplashActivity.TAG, "nota en usecase $quote")
         if (quote != null) {
             return quote
         }
