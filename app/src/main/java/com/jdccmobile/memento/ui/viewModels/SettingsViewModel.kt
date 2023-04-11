@@ -23,7 +23,7 @@ class SettingsViewModel @Inject constructor(
     fun getNotificationConf() : Boolean? = runBlocking { repository.getBool(NOTIFICATION_ENABLED) }
 
     fun deleteFavQuotes(){
-        // todo tengo que llamar de la view aqui y luego al usecase o directamente al usecase?
+        // todo hacer usecases
     }
 
 }

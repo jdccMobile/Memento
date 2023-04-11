@@ -1,5 +1,7 @@
 package com.jdccmobile.memento.data.preferences
 
+import com.jdccmobile.memento.data.model.QuotesModel
+
 interface DataStoreRepository {
 
     suspend fun putString(key: String, value: String)
