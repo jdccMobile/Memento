@@ -1,6 +1,8 @@
 package com.jdccmobile.memento.di
 
 import android.content.Context
+import com.jdccmobile.memento.data.firebase.FirestoreRepository
+import com.jdccmobile.memento.data.firebase.FirestoreRepositoryImp
 import com.jdccmobile.memento.data.preferences.DataStoreRepositoryImp
 import com.jdccmobile.memento.data.preferences.DataStoreRepository
 import dagger.Module
@@ -19,4 +21,8 @@ object AppModule {
     fun provideDataStoreRepository(
         @ApplicationContext app: Context
     ): DataStoreRepository = DataStoreRepositoryImp(app)
+
+    @Singleton
+    @Provides
+    fun provideFirestoreRepository(): FirestoreRepository = FirestoreRepositoryImp()
 }
