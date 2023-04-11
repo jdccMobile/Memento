@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.jdccmobile.memento.R
 import com.jdccmobile.memento.databinding.ActivityMenuBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 //todo convertir cardview de estoicas clicable
+@AndroidEntryPoint
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
