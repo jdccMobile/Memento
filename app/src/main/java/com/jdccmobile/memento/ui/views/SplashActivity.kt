@@ -44,7 +44,6 @@ class SplashActivity : AppCompatActivity() {
                 intent.putExtra("author", quotesModel.author)
                 startActivity(intent)
                 finish()
-                // todo poner if de que si tarda mas de x tiempo avanze y de error
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.jdccmobile.memento.ui.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,13 +31,16 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        binding.swNotifications.isChecked = viewModel.getNotificationConf() ?: false
+        viewModel.onCreateView()
+        viewModel.settings.observe(this){ notiConfValue ->
+            if(notiConfValue != null){
+                binding.swNotifications.isChecked = notiConfValue
+            }
+        }
     }
-    // todo lo tengo que hacer en un mutable list si o si o asi esta bien?
 
     private fun initListeners() {
         binding.btDelFavorites.setOnClickListener { createDeleteDialog() }
-
         binding.swNotifications.setOnCheckedChangeListener { _, isChecked -> viewModel.saveNotificationsConf(isChecked) }
     }
 
@@ -54,6 +58,8 @@ class SettingsActivity : AppCompatActivity() {
             Toast.makeText(this, "Citas favoritas borradas", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
+
+        btCancelDelete.setOnClickListener { dialog.dismiss() }
 
         dialog.show()
     }

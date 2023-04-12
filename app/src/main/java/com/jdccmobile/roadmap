@@ -1,11 +1,12 @@
 Splash screen
-    Poner if de que si tarda mas de x tiempo avanze y de error
     Quitar los runblock para que no bloqueen el hilo principal
 
 Pantalla de menu
     Hacer boton de estoicas clicables y cambiar color
+    Cambiar diseño tal vez
 
 Pantalla de ajustes
+    refactor a uses cases y view model
     implementar borrado de room
 
 Pantalla de favoritas
@@ -19,8 +20,6 @@ Boton de compartir
 Publicidad en todas las pantallas menos la principal
 
 Refactor
-    Pasar firebase a data
-    utilizar uses cases
     view -> viewmodel -> usescases -> data (y al reves)
 
 General

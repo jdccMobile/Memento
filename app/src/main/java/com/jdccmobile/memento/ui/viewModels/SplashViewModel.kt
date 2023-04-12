@@ -74,7 +74,7 @@ class SplashViewModel @Inject constructor(
         timer.start()
     }
 
-    fun getQuoteFirestore(){
+    private fun getQuoteFirestore(){
         viewModelScope.launch {
             val quote: QuotesModel? = getRandomQuoteUseCase()
             if(quote != null){
@@ -86,27 +86,27 @@ class SplashViewModel @Inject constructor(
         }
     }
 
-    fun saveLastDay(lastDay: Int) {
+    private fun saveLastDay(lastDay: Int) {
         viewModelScope.launch {
             saveLastDayUseCase(lastDay)
         }
     }
 
-    fun getLastDay(): Int? = runBlocking { getLastDayUseCase() }
+    private fun getLastDay(): Int? = runBlocking { getLastDayUseCase() }
 
-    fun saveLastQuote(quote: String) {
+    private fun saveLastQuote(quote: String) {
         viewModelScope.launch {
             saveLastQuoteUseCase(quote)
         }
     }
 
-    fun getLastQuote(): String? = runBlocking { getLastQuoteUseCase() }
+    private fun getLastQuote(): String? = runBlocking { getLastQuoteUseCase() }
 
-    fun saveLastAuthor(author: String) {
+    private fun saveLastAuthor(author: String) {
         viewModelScope.launch {
             saveLastAuthorUseCase(author)
         }
     }
 
-    fun getLastAuthor(): String? = runBlocking {  getLastAuthorUseCase() }
+    private fun getLastAuthor(): String? = runBlocking {  getLastAuthorUseCase() }
 }

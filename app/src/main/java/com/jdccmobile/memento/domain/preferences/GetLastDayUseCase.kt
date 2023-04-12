@@ -2,9 +2,7 @@ package com.jdccmobile.memento.domain.preferences
 
 import com.jdccmobile.memento.data.preferences.DataStoreRepository
 import com.jdccmobile.memento.ui.viewModels.LAST_DAY
-import com.jdccmobile.memento.ui.viewModels.QUOTE
 import javax.inject.Inject
-
 
 class GetLastDayUseCase @Inject constructor(
     private val dataStoreRepository: DataStoreRepository
