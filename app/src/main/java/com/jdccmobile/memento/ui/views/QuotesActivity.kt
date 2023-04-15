@@ -3,14 +3,20 @@ package com.jdccmobile.memento.ui.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.jdccmobile.memento.R
+import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.databinding.ActivityQuoteBinding
+import com.jdccmobile.memento.ui.viewModels.QuotesViewModel
+import com.jdccmobile.memento.ui.viewModels.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class QuotesActivity : AppCompatActivity() {
 
     private var isFavourite = false // todo quitar y guardar en data store
+
+    private val viewModel by viewModels<QuotesViewModel>()
 
     private lateinit var binding: ActivityQuoteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +40,10 @@ class QuotesActivity : AppCompatActivity() {
     private fun initListener() {
         binding.ivShare.setOnClickListener { } // Todo añadir compartir
         binding.ivHome.setOnClickListener { navigateToMenu() }
-        binding.ivLike.setOnClickListener { changeHeartColor() }
+        binding.ivLike.setOnClickListener {
+            viewModel.saveFavQuote(QuotesModel(binding.tvQuote.text.toString(), binding.tvAuthor.text.toString()))
+            changeHeartColor()
+        }
     }
 
 

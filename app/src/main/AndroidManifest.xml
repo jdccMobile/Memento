@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Memento"
         tools:targetApi="31">
         <activity
+            android:name=".ui.views.FavoritesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.views.SettingsActivity"
             android:exported="false" />
         <activity
