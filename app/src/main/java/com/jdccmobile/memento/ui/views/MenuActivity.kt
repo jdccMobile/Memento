@@ -24,7 +24,12 @@ class MenuActivity : AppCompatActivity() {
     private fun initListeners() {
         binding.cvSettings.setOnClickListener { navigateToSettings() }
 
-        binding.cvFavorites.setOnClickListener {  } // todo mostrar pantalla de favoritas con recycler view
+        binding.cvFavorites.setOnClickListener { navigateToFavorites() } // todo mostrar pantalla de favoritas con recycler view
+    }
+
+    private fun navigateToFavorites() {
+        val intent = Intent(this, FavoritesActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigateToSettings() {

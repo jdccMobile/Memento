@@ -20,6 +20,7 @@ Boton de compartir
 Publicidad en todas las pantallas menos la principal
 
 Refactor
+    añadir repositorio y crear modelo en domain
     view -> viewmodel -> usescases -> data (y al reves)
 
 General

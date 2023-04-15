@@ -1,4 +1,5 @@
 package com.jdccmobile.memento.ui.viewModels
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,19 +21,19 @@ class SettingsViewModel @Inject constructor(
 
     val settings = MutableLiveData<Boolean>()
 
-    fun onCreateView(){
+    fun onCreateView() {
         settings.postValue(getNotiConf())
     }
 
     private fun getNotiConf(): Boolean? = runBlocking { getNotiConfUseCase() }
 
-    fun saveNotificationsConf(value: Boolean){
+    fun saveNotificationsConf(value: Boolean) {
         viewModelScope.launch {
             saveNotiConfUseCase(value)
         }
     }
 
-    fun deleteFavQuotes(){
+    fun deleteFavQuotes() {
         // todo hacer usecases
     }
 
