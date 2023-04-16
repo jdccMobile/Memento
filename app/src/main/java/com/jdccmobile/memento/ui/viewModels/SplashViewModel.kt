@@ -20,6 +20,7 @@ import com.jdccmobile.memento.ui.views.SplashActivity
 const val QUOTE = "QUOTE"
 const val AUTHOR = "AUTHOR"
 const val LAST_DAY = "LAST_DAY"
+const val LAST_QUOTE_FAV = "LAST_QUOTE_FAV"
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
@@ -29,26 +30,25 @@ class SplashViewModel @Inject constructor(
     private val getLastAuthorUseCase: GetLastAuthorUseCase,
     private val saveLastAuthorUseCase: SaveLastAuthorUseCase,
     private val saveLastDayUseCase: SaveLastDayUseCase,
-    private val getLastDayUseCase: GetLastDayUseCase
+    private val getLastDayUseCase: GetLastDayUseCase,
+    private val saveFavCurrentQuoteUC: SaveFavCurrentQuoteUC
 ) : ViewModel() {
 
     // Create MutableLiveData which MainFragment can subscribe to
     // When this data changes, it triggers the UI to do an update
     val quotesModel = MutableLiveData<QuotesModel>()
 
-    fun onCreateView(){
-        Log.w(SplashActivity.TAG, "Creo la vista")
+    fun onCreateView() {
         val currentDay = LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("D")).toInt()
         val lastDay = getLastDay()
 
         timerWaitConexion()
 
-        Log.i(SplashActivity.TAG, "ultimo dia $lastDay")
         if (lastDay != null) {
             if (currentDay > lastDay) {
-                Log.w(SplashActivity.TAG, "llamo firestore1")
                 saveLastDay(currentDay)
+                resetFavIcon()
                 getQuoteFirestore()
 
             } else {
@@ -56,35 +56,45 @@ class SplashViewModel @Inject constructor(
                 quotesModel.postValue(quote)
             }
         } else {
-            Log.w(SplashActivity.TAG, "llamo firestore 2")
             saveLastDay(currentDay)
+            resetFavIcon()
             getQuoteFirestore()
 
         }
     }
 
+
     private fun timerWaitConexion() {
         val timer = object : CountDownTimer(4000, 1000) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
-               val quote = QuotesModel("Sin conexión a internet", "Aristoteles")
+                val quote = QuotesModel("Sin conexión a internet", "Aristoteles")
                 quotesModel.postValue(quote)
             }
         }
         timer.start()
     }
 
-    private fun getQuoteFirestore(){
+
+    private fun getQuoteFirestore() {
         viewModelScope.launch {
             val quote: QuotesModel? = getRandomQuoteUseCase()
-            if(quote != null){
+            if (quote != null) {
                 saveLastQuote(quote.quote)
-                if(quote.quote == "Sin conexión a internet") saveLastDay(0) // para que si volvemos a entrar genere una nueva cita
+                if (quote.quote == "Sin conexión a internet") saveLastDay(0) // para que si volvemos a entrar genere una nueva cita
                 saveLastAuthor(quote.author)
                 quotesModel.postValue(quote)
             }
         }
     }
+
+
+    private fun resetFavIcon() {
+        viewModelScope.launch {
+            saveFavCurrentQuoteUC(false)
+        }
+    }
+
 
     private fun saveLastDay(lastDay: Int) {
         viewModelScope.launch {
@@ -92,7 +102,9 @@ class SplashViewModel @Inject constructor(
         }
     }
 
+
     private fun getLastDay(): Int? = runBlocking { getLastDayUseCase() }
+
 
     private fun saveLastQuote(quote: String) {
         viewModelScope.launch {
@@ -100,7 +112,9 @@ class SplashViewModel @Inject constructor(
         }
     }
 
+
     private fun getLastQuote(): String? = runBlocking { getLastQuoteUseCase() }
+
 
     private fun saveLastAuthor(author: String) {
         viewModelScope.launch {
@@ -108,5 +122,6 @@ class SplashViewModel @Inject constructor(
         }
     }
 
-    private fun getLastAuthor(): String? = runBlocking {  getLastAuthorUseCase() }
+
+    private fun getLastAuthor(): String? = runBlocking { getLastAuthorUseCase() }
 }

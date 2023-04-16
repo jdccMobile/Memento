@@ -62,8 +62,6 @@ class DataStoreRepositoryImp @Inject constructor(
         context.dataStore.edit { preferences ->
             preferences[preferencesKey] = value
         }
-        Log.i(SplashActivity.TAG, "Nueva configuracion $value")
-        Toast.makeText(context, "Configuración cambiada", Toast.LENGTH_SHORT).show()
     }
 
     override suspend fun getBool(key: String): Boolean? {

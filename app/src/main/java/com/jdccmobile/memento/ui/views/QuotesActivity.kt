@@ -3,6 +3,7 @@ package com.jdccmobile.memento.ui.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.jdccmobile.memento.R
 import com.jdccmobile.memento.data.model.QuotesModel
@@ -10,11 +11,12 @@ import com.jdccmobile.memento.databinding.ActivityQuoteBinding
 import com.jdccmobile.memento.ui.viewModels.QuotesViewModel
 import com.jdccmobile.memento.ui.viewModels.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import org.checkerframework.common.returnsreceiver.qual.This
 
 @AndroidEntryPoint
 class QuotesActivity : AppCompatActivity() {
 
-    private var isFavourite = false // todo quitar y guardar en data store
+    private var isFavorite = false // todo quitar y guardar en data store
 
     private val viewModel by viewModels<QuotesViewModel>()
 
@@ -24,8 +26,14 @@ class QuotesActivity : AppCompatActivity() {
         binding = ActivityQuoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initQuote()
+        initUI()
         initListener()
+    }
+
+    private fun initUI() {
+        viewModel.onCreateView()
+        initQuote()
+        initFav()
     }
 
 
@@ -37,13 +45,19 @@ class QuotesActivity : AppCompatActivity() {
     }
 
 
+    private fun initFav() {
+        viewModel.isFavorite.observe(this){ isFav ->
+            isFavorite = isFav
+            if(isFav) binding.isFav.setImageResource(R.drawable.ic_red_heart)
+            else binding.isFav.setImageResource(R.drawable.ic_heart)
+        }
+    }
+
+
     private fun initListener() {
         binding.ivShare.setOnClickListener { } // Todo añadir compartir
         binding.ivHome.setOnClickListener { navigateToMenu() }
-        binding.ivLike.setOnClickListener {
-            viewModel.saveFavQuote(QuotesModel(binding.tvQuote.text.toString(), binding.tvAuthor.text.toString()))
-            changeHeartColor()
-        }
+        binding.isFav.setOnClickListener { changeHeartColor() }
     }
 
 
@@ -54,14 +68,11 @@ class QuotesActivity : AppCompatActivity() {
 
 
     private fun changeHeartColor() {
-        // todo pasar corazon a datastore cuando haga los ajustes
-        if(isFavourite){
-            isFavourite = !isFavourite
-            binding.ivLike.setImageResource(R.drawable.ic_heart)
-        }
-        else{
-            isFavourite = !isFavourite
-            binding.ivLike.setImageResource(R.drawable.ic_red_heart)
+        if(!isFavorite){
+            viewModel.saveIsCurrentFav()
+            viewModel.saveFavQuote(QuotesModel(binding.tvQuote.text.toString(), binding.tvAuthor.text.toString()))
+            binding.isFav.setImageResource(R.drawable.ic_red_heart)
+            Toast.makeText(this, "Cita grabada en favoritos", Toast.LENGTH_SHORT).show()
         }
     }
 

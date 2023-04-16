@@ -54,7 +54,7 @@ class SettingsActivity : AppCompatActivity() {
         val btCancelDelete = customDialog.findViewById<Button>(R.id.btCancelDelete)
 
         btDelete.setOnClickListener {
-            // todo borrar favoritos de room
+            viewModel.deleteAllFavQuotes()
             Toast.makeText(this, "Citas favoritas borradas", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
