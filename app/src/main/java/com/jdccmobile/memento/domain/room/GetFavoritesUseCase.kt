@@ -16,7 +16,6 @@ class GetFavoritesUseCase @Inject constructor(
         val response: List<QuoteEntity> = quoteDao.getAllFavQuotes()
         if (response.isNotEmpty()) {
             return response.map { it.toModel() }
-
         } else {
             val responseNull: List<QuotesModel> =
                 listOf(QuotesModel("No ha citas favoritas guardadas", "aristotles"))
