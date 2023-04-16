@@ -1,29 +1,27 @@
+Pantalla de ajustes
+    implementar borrado de room
+
+Notificaciones diarias
+    Implementar
+
+Boton de compartir
+    Implementar
+
+Publicidad en todas las pantallas menos la principal
+    Implementar
+
+Favoritas
+    Si se pula en favoritas bloquear boton, es decir, una vez que se marca como favorita solo
+    se puede borrar desde ajustes o citas favoritas
+    Poner cada dia el boton de corazon a blanco
+    Borrar una cita si se quita de favoritas
+    Añadir la opcion de borrar cita favorita si se clicka en ella
+
 Splash screen
     Quitar los runblock para que no bloqueen el hilo principal
 
-Pantalla de menu
-    Hacer boton de estoicas clicables y cambiar color
-    Cambiar diseño tal vez
-
-Pantalla de ajustes
-    refactor a uses cases y view model
-    implementar borrado de room
-
-Pantalla de favoritas
-    Room para guardar las citas
-    Recycler view con las citas recogidas de room
-
-Notificaciones diarias
-
-Boton de compartir
-
-Publicidad en todas las pantallas menos la principal
-
-Refactor
-    añadir repositorio y crear modelo en domain
-    view -> viewmodel -> usescases -> data (y al reves)
-
-General
+Limpieza General
+    compartir valores de las vistas
     Definir las fuentes en un estilo general
     Cambiar el color de los textos a textcolor
     Impedir la rotacion de la app
@@ -32,7 +30,13 @@ General
 
 Subir play store
     mirar aso
+    subir play store
 
 
+**** Siguiente version ****
+Pantalla de menu
+    Hacer boton de estoicas clicables y cambiar color (2.0)
+    Cambiar diseño tal vez (2.0)
+    Rotacion de la cardview de citas para que muestre una explicacion
 
 

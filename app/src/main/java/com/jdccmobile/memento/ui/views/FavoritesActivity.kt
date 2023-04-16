@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jdccmobile.memento.R
 import com.jdccmobile.memento.databinding.ActivityFavoritesBinding
 import com.jdccmobile.memento.databinding.ActivitySplashBinding
+import com.jdccmobile.memento.ui.adapters.FavQuoteAdapter
 import com.jdccmobile.memento.ui.viewModels.FavoritesViewModel
 import com.jdccmobile.memento.ui.viewModels.QuotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,18 +24,37 @@ class FavoritesActivity @Inject constructor() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFavoritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.onCreateView()
-        printQuote()
+
+        initUI()
+//        printQuote()
     }
 
-    private fun printQuote() {
-        viewModel.favoritesModel.observe(this){ quotesModel ->
+    private fun initUI() {
+        viewModel.onCreateView()
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+                viewModel.favoritesModel.observe(this){ quotesModel ->
             if(quotesModel != null){
-                binding.tvCita.text = quotesModel.quote
-                binding.tvAutor.text = quotesModel.author
+                binding.rvFavQuotes.layoutManager = LinearLayoutManager(this)
+                binding.rvFavQuotes.adapter = FavQuoteAdapter(quotesModel)
+            }else{
+                //todo poner progress bar
             }
         }
+
     }
+
+//    private fun printQuote() {
+//        viewModel.favoritesModel.observe(this){ quotesModel ->
+//            if(quotesModel != null){
+//
+////                binding.tvCita.text = quotesModel.quote
+////                binding.tvAutor.text = quotesModel.author
+//            }
+//        }
+//    }
 
 
 }

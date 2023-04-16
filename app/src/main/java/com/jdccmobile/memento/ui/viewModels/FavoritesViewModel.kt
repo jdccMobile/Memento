@@ -18,7 +18,7 @@ class FavoritesViewModel @Inject constructor(
     private val getFavoritesUseCase : GetFavoritesUseCase,
 ): ViewModel() {
 
-    val favoritesModel = MutableLiveData<QuotesModel>()
+    val favoritesModel = MutableLiveData<List<QuotesModel>>()
 
 
     fun onCreateView() {
@@ -29,8 +29,9 @@ class FavoritesViewModel @Inject constructor(
     fun getFavQuote(){
         viewModelScope.launch {
             val response = getFavoritesUseCase()
-            val quote: QuotesModel? = response!![0]
-            if(quote != null) favoritesModel.postValue(quote)
+//            val quote: QuotesModel? = response!![0]
+//            if(quote != null) favoritesModel.postValue(quote)
+            if(response != null) favoritesModel.postValue(response)
         }
     }
 
