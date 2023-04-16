@@ -109,7 +109,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/ivLike"
+        android:id="@+id/isFav"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"

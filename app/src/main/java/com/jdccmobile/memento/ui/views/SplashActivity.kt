@@ -36,7 +36,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigateToQuotes() {
-
         viewModel.quotesModel.observe(this){ quotesModel ->
             if(quotesModel != null){
                 val intent = Intent(this, QuotesActivity::class.java)

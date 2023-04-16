@@ -1,6 +1,3 @@
-Pantalla de ajustes
-    implementar borrado de room
-
 Notificaciones diarias
     Implementar
 
@@ -11,11 +8,10 @@ Publicidad en todas las pantallas menos la principal
     Implementar
 
 Favoritas
-    Si se pula en favoritas bloquear boton, es decir, una vez que se marca como favorita solo
+    Si se pulSa en favoritas bloquear boton, es decir, una vez que se marca como favorita solo
     se puede borrar desde ajustes o citas favoritas
     Poner cada dia el boton de corazon a blanco
-    Borrar una cita si se quita de favoritas
-    Añadir la opcion de borrar cita favorita si se clicka en ella
+    Añadir la opcion de borrar cita favorita si se clicka en ella desde favoritas
 
 Splash screen
     Quitar los runblock para que no bloqueen el hilo principal

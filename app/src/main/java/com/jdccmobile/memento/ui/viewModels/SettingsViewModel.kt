@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.domain.preferences.GetNotiConfUseCase
 import com.jdccmobile.memento.domain.preferences.SaveNotiConfUseCase
+import com.jdccmobile.memento.domain.room.DelAllFavQuotesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -16,7 +17,8 @@ const val NOTIFICATION_ENABLED = "NOTIFICATION_ENABLED"
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val getNotiConfUseCase: GetNotiConfUseCase,
-    private val saveNotiConfUseCase: SaveNotiConfUseCase
+    private val saveNotiConfUseCase: SaveNotiConfUseCase,
+    private val delAllFavQuotesUseCase: DelAllFavQuotesUseCase
 ) : ViewModel() {
 
     val settings = MutableLiveData<Boolean>()
@@ -33,8 +35,10 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun deleteFavQuotes() {
-        // todo hacer usecases
+    fun deleteAllFavQuotes() {
+        viewModelScope.launch {
+            delAllFavQuotesUseCase()
+        }
     }
 
 }
