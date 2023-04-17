@@ -9,15 +9,14 @@ import com.jdccmobile.memento.R
 import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.databinding.ActivityQuoteBinding
 import com.jdccmobile.memento.ui.viewModels.QuotesViewModel
-import com.jdccmobile.memento.ui.viewModels.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.checkerframework.common.returnsreceiver.qual.This
 
 @AndroidEntryPoint
 class QuotesActivity : AppCompatActivity() {
 
     private var isFavorite = false // todo quitar y guardar en data store
-
+    private var quote = ""
+    private var author = ""
     private val viewModel by viewModels<QuotesViewModel>()
 
     private lateinit var binding: ActivityQuoteBinding
@@ -38,8 +37,8 @@ class QuotesActivity : AppCompatActivity() {
 
 
     private fun initQuote() {
-        val quote = intent.getStringExtra("quote")
-        val author = intent.getStringExtra("author")
+        quote = intent.getStringExtra("quote")!!
+        author = intent.getStringExtra("author")!!
         binding.tvQuote.text = quote
         binding.tvAuthor.text = author
     }
@@ -55,9 +54,21 @@ class QuotesActivity : AppCompatActivity() {
 
 
     private fun initListener() {
-        binding.ivShare.setOnClickListener { } // Todo añadir compartir
+        binding.ivShare.setOnClickListener { shareQuote() } // Todo añadir compartir
         binding.ivHome.setOnClickListener { navigateToMenu() }
         binding.isFav.setOnClickListener { changeHeartColor() }
+    }
+
+    private fun shareQuote() {
+        val textToShare = "Como dijo  $author: '$quote'. Descubre más citas diarias en Memento (añadir enlance)"
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, textToShare)
+            type = "text/plain"
+        }
+
+        val finalShareIntent = Intent.createChooser(shareIntent, null)
+        this.startActivity(finalShareIntent)
     }
 
 

@@ -1,22 +1,15 @@
 Notificaciones diarias
     Implementar
 
-Boton de compartir
-    Implementar
-
-Publicidad en todas las pantallas menos la principal
-    Implementar
-
 Favoritas
-    Si se pulSa en favoritas bloquear boton, es decir, una vez que se marca como favorita solo
-    se puede borrar desde ajustes o citas favoritas
-    Poner cada dia el boton de corazon a blanco
+    Poner cada dia el boton de corazon a blanco (Comprobar)
     Añadir la opcion de borrar cita favorita si se clicka en ella desde favoritas
 
 Splash screen
     Quitar los runblock para que no bloqueen el hilo principal
 
 Limpieza General
+    mirar las constantes y ponerlas todas juntas
     compartir valores de las vistas
     Definir las fuentes en un estilo general
     Cambiar el color de los textos a textcolor
