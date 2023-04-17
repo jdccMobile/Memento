@@ -13,14 +13,9 @@ import kotlinx.coroutines.runBlocking
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
-import android.util.Log
-import com.jdccmobile.memento.ui.views.SplashActivity
 
 
-const val QUOTE = "QUOTE"
-const val AUTHOR = "AUTHOR"
-const val LAST_DAY = "LAST_DAY"
-const val LAST_QUOTE_FAV = "LAST_QUOTE_FAV"
+
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
@@ -45,6 +40,7 @@ class SplashViewModel @Inject constructor(
 
         timerWaitConexion()
 
+        // One quote per day
         if (lastDay != null) {
             if (currentDay > lastDay) {
                 saveLastDay(currentDay)

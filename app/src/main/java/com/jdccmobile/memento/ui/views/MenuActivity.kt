@@ -3,7 +3,7 @@ package com.jdccmobile.memento.ui.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jdccmobile.memento.R
+import com.google.android.gms.ads.AdRequest
 import com.jdccmobile.memento.databinding.ActivityMenuBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +18,12 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initUI()
         initListeners()
+    }
+
+    private fun initUI() {
+        loadAds()
     }
 
     private fun initListeners() {
@@ -35,5 +40,10 @@ class MenuActivity : AppCompatActivity() {
     private fun navigateToSettings() {
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun loadAds() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adMenu.loadAd(adRequest)
     }
 }

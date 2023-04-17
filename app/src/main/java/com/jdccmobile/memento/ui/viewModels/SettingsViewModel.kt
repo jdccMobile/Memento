@@ -12,8 +12,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
-const val NOTIFICATION_ENABLED = "NOTIFICATION_ENABLED"
-
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val getNotiConfUseCase: GetNotiConfUseCase,

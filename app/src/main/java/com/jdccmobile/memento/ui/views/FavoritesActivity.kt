@@ -1,18 +1,14 @@
 package com.jdccmobile.memento.ui.views
 
-import android.content.Intent
+import com.google.android.gms.ads.AdRequest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jdccmobile.memento.R
 import com.jdccmobile.memento.databinding.ActivityFavoritesBinding
-import com.jdccmobile.memento.databinding.ActivitySplashBinding
 import com.jdccmobile.memento.ui.adapters.FavQuoteAdapter
 import com.jdccmobile.memento.ui.viewModels.FavoritesViewModel
-import com.jdccmobile.memento.ui.viewModels.QuotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,12 +22,12 @@ class FavoritesActivity @Inject constructor() : AppCompatActivity() {
         setContentView(binding.root)
 
         initUI()
-//        printQuote()
     }
 
     private fun initUI() {
         viewModel.onCreateView()
         initRecyclerView()
+        loadAds()
     }
 
     private fun initRecyclerView() {
@@ -43,18 +39,13 @@ class FavoritesActivity @Inject constructor() : AppCompatActivity() {
                 //todo poner progress bar
             }
         }
-
     }
 
-//    private fun printQuote() {
-//        viewModel.favoritesModel.observe(this){ quotesModel ->
-//            if(quotesModel != null){
-//
-////                binding.tvCita.text = quotesModel.quote
-////                binding.tvAutor.text = quotesModel.author
-//            }
-//        }
-//    }
+
+    private fun loadAds() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adFavorites.loadAd(adRequest)
+    }
 
 
 }

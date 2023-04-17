@@ -1,18 +1,16 @@
 package com.jdccmobile.memento.ui.views
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.ads.AdRequest
 import com.jdccmobile.memento.R
 import com.jdccmobile.memento.databinding.ActivitySettingsBinding
 import com.jdccmobile.memento.ui.viewModels.SettingsViewModel
-import com.jdccmobile.memento.ui.views.SplashActivity.Companion.TAG
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,11 +35,17 @@ class SettingsActivity : AppCompatActivity() {
                 binding.swNotifications.isChecked = notiConfValue
             }
         }
+        loadAds()
     }
 
     private fun initListeners() {
         binding.btDelFavorites.setOnClickListener { createDeleteDialog() }
         binding.swNotifications.setOnCheckedChangeListener { _, isChecked -> viewModel.saveNotificationsConf(isChecked) }
+    }
+
+    private fun loadAds() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adSettings.loadAd(adRequest)
     }
 
     private fun createDeleteDialog() {

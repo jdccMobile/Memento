@@ -1,7 +1,7 @@
 package com.jdccmobile.memento.domain.preferences
 
 import com.jdccmobile.memento.data.preferences.DataStoreRepository
-import com.jdccmobile.memento.ui.viewModels.QUOTE
+import com.jdccmobile.memento.ui.views.SplashActivity.Companion.QUOTE
 import javax.inject.Inject
 
 class SaveLastQuoteUseCase @Inject constructor(
