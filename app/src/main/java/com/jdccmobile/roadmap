@@ -13,7 +13,6 @@ Limpieza General
     compartir valores de las vistas
     Definir las fuentes en un estilo general
     Cambiar el color de los textos a textcolor
-    Impedir la rotacion de la app
     Limpieza de warnings en codigo y layouts
     Quitar todos los strings harcodeados en el codigo
 

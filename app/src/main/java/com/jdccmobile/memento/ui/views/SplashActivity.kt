@@ -18,6 +18,11 @@ class SplashActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "josed"
+        const val QUOTE = "QUOTE"
+        const val AUTHOR = "AUTHOR"
+        const val LAST_DAY = "LAST_DAY"
+        const val LAST_QUOTE_FAV = "LAST_QUOTE_FAV"
+        const val NOTIFICATION_ENABLED = "NOTIFICATION_ENABLED"
     }
 
     private val viewModel by viewModels<SplashViewModel>()

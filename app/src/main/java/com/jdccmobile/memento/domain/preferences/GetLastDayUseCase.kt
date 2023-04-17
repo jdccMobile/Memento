@@ -1,7 +1,7 @@
 package com.jdccmobile.memento.domain.preferences
 
 import com.jdccmobile.memento.data.preferences.DataStoreRepository
-import com.jdccmobile.memento.ui.viewModels.LAST_DAY
+import com.jdccmobile.memento.ui.views.SplashActivity.Companion.LAST_DAY
 import javax.inject.Inject
 
 class GetLastDayUseCase @Inject constructor(

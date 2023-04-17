@@ -15,10 +15,7 @@ import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 
-const val QUOTE = "QUOTE"
-const val AUTHOR = "AUTHOR"
-const val LAST_DAY = "LAST_DAY"
-const val LAST_QUOTE_FAV = "LAST_QUOTE_FAV"
+
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
