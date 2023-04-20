@@ -9,12 +9,14 @@ import com.jdccmobile.memento.R
 import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.databinding.ActivityQuoteBinding
 import com.jdccmobile.memento.ui.viewModels.QuotesViewModel
+import com.jdccmobile.memento.ui.views.SplashActivity.Companion.AUTHOR_INTENT
+import com.jdccmobile.memento.ui.views.SplashActivity.Companion.QUOTE_INTENT
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class QuotesActivity : AppCompatActivity() {
 
-    private var isFavorite = false // todo quitar y guardar en data store
+    private var isFavorite = false
     private var quote = ""
     private var author = ""
     private val viewModel by viewModels<QuotesViewModel>()
@@ -37,8 +39,8 @@ class QuotesActivity : AppCompatActivity() {
 
 
     private fun initQuote() {
-        quote = intent.getStringExtra("quote")!!
-        author = intent.getStringExtra("author")!!
+        quote = intent.getStringExtra(QUOTE_INTENT)!!
+        author = intent.getStringExtra(AUTHOR_INTENT)!!
         binding.tvQuote.text = quote
         binding.tvAuthor.text = author
     }
@@ -54,13 +56,13 @@ class QuotesActivity : AppCompatActivity() {
 
 
     private fun initListener() {
-        binding.ivShare.setOnClickListener { shareQuote() } // Todo añadir compartir
+        binding.ivShare.setOnClickListener { shareQuote() }
         binding.ivHome.setOnClickListener { navigateToMenu() }
         binding.isFav.setOnClickListener { changeHeartColor() }
     }
 
     private fun shareQuote() {
-        val textToShare = "Como dijo  $author: '$quote'. Descubre más citas diarias en Memento (añadir enlance)"
+        val textToShare = getString(R.string.as_he_said) + " $author: '$quote'. " + getString(R.string.discover_new_cotes)
         val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, textToShare)
@@ -83,7 +85,7 @@ class QuotesActivity : AppCompatActivity() {
             viewModel.saveIsCurrentFav()
             viewModel.saveFavQuote(QuotesModel(binding.tvQuote.text.toString(), binding.tvAuthor.text.toString()))
             binding.isFav.setImageResource(R.drawable.ic_red_heart)
-            Toast.makeText(this, "Cita grabada en favoritos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.save_quote_realized), Toast.LENGTH_SHORT).show()
         }
     }
 

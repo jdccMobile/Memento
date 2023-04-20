@@ -8,5 +8,5 @@ class GetLastQuoteUseCase @Inject constructor(
     private val dataStoreRepository: DataStoreRepository
 ) {
 
-    suspend operator fun invoke() : String? = dataStoreRepository.getString(QUOTE).orEmpty()
+    suspend operator fun invoke() : String = dataStoreRepository.getString(QUOTE).orEmpty()
 }

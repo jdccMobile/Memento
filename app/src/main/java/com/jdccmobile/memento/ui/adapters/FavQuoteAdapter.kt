@@ -1,5 +1,6 @@
 package com.jdccmobile.memento.ui.adapters
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +35,12 @@ class FavQuoteAdapter @Inject constructor(
         fun render(quote: QuotesModel){
             favQuote.text = quote.quote
             favAuthor.text = quote.author
+
+            // Agrega la animación personalizada aquí
+            val anim = ObjectAnimator.ofFloat(itemView, View.ALPHA, 0f, 1f)
+            anim.duration = 500
+            anim.start()
         }
     }
 }
+

@@ -19,7 +19,9 @@ class SplashActivity : AppCompatActivity() {
     companion object {
         const val TAG = "josed"
         const val QUOTE = "QUOTE"
+        const val QUOTE_INTENT = "quote"
         const val AUTHOR = "AUTHOR"
+        const val AUTHOR_INTENT = "author"
         const val LAST_DAY = "LAST_DAY"
         const val LAST_QUOTE_FAV = "LAST_QUOTE_FAV"
         const val NOTIFICATION_ENABLED = "NOTIFICATION_ENABLED"
@@ -44,8 +46,8 @@ class SplashActivity : AppCompatActivity() {
         viewModel.quotesModel.observe(this){ quotesModel ->
             if(quotesModel != null){
                 val intent = Intent(this, QuotesActivity::class.java)
-                intent.putExtra("quote", quotesModel.quote)
-                intent.putExtra("author", quotesModel.author)
+                intent.putExtra(QUOTE_INTENT, quotesModel.quote)
+                intent.putExtra(AUTHOR_INTENT, quotesModel.author)
                 startActivity(intent)
                 finish()
             }

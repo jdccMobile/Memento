@@ -1,9 +1,11 @@
 package com.jdccmobile.memento.ui.viewModels
 
+import android.app.Application
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jdccmobile.memento.R
 import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.domain.firestore.GetRandomQuoteUseCase
 import com.jdccmobile.memento.domain.preferences.*
@@ -26,7 +28,8 @@ class SplashViewModel @Inject constructor(
     private val saveLastAuthorUseCase: SaveLastAuthorUseCase,
     private val saveLastDayUseCase: SaveLastDayUseCase,
     private val getLastDayUseCase: GetLastDayUseCase,
-    private val saveFavCurrentQuoteUC: SaveFavCurrentQuoteUC
+    private val saveFavCurrentQuoteUC: SaveFavCurrentQuoteUC,
+    private val application: Application
 ) : ViewModel() {
 
     // Create MutableLiveData which MainFragment can subscribe to
@@ -48,7 +51,7 @@ class SplashViewModel @Inject constructor(
                 getQuoteFirestore()
 
             } else {
-                val quote = QuotesModel(getLastQuote()!!, getLastAuthor()!!)
+                val quote = QuotesModel(getLastQuote(), getLastAuthor())
                 quotesModel.postValue(quote)
             }
         } else {
@@ -59,12 +62,12 @@ class SplashViewModel @Inject constructor(
         }
     }
 
-
+    // Max time duratio of the splash screen
     private fun timerWaitConexion() {
         val timer = object : CountDownTimer(4000, 1000) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
-                val quote = QuotesModel("Sin conexión a internet", "Aristoteles")
+                val quote = QuotesModel(application.applicationContext.getString(R.string.no_internet_connection), "Aristoteles")
                 quotesModel.postValue(quote)
             }
         }
@@ -109,7 +112,7 @@ class SplashViewModel @Inject constructor(
     }
 
 
-    private fun getLastQuote(): String? = runBlocking { getLastQuoteUseCase() }
+    private fun getLastQuote(): String = runBlocking { getLastQuoteUseCase() }
 
 
     private fun saveLastAuthor(author: String) {
@@ -119,5 +122,5 @@ class SplashViewModel @Inject constructor(
     }
 
 
-    private fun getLastAuthor(): String? = runBlocking { getLastAuthorUseCase() }
+    private fun getLastAuthor(): String = runBlocking { getLastAuthorUseCase() }
 }

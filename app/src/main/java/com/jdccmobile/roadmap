@@ -2,19 +2,14 @@ Notificaciones diarias
     Implementar
 
 Favoritas
-    Poner cada dia el boton de corazon a blanco (Comprobar)
     Añadir la opcion de borrar cita favorita si se clicka en ella desde favoritas
 
 Splash screen
     Quitar los runblock para que no bloqueen el hilo principal
 
 Limpieza General
-    mirar las constantes y ponerlas todas juntas
     compartir valores de las vistas
-    Definir las fuentes en un estilo general
-    Cambiar el color de los textos a textcolor
-    Limpieza de warnings en codigo y layouts
-    Quitar todos los strings harcodeados en el codigo
+    Quitar animacion del recycler view
 
 Subir play store
     mirar aso
@@ -22,7 +17,7 @@ Subir play store
 
 
 **** Siguiente version ****
-Pantalla de menu
+    Renovar iconos pantalla de menu
     Hacer boton de estoicas clicables y cambiar color (2.0)
     Cambiar diseño tal vez (2.0)
     Rotacion de la cardview de citas para que muestre una explicacion

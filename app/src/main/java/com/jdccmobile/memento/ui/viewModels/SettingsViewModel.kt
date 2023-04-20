@@ -3,7 +3,6 @@ package com.jdccmobile.memento.ui.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.domain.preferences.GetNotiConfUseCase
 import com.jdccmobile.memento.domain.preferences.SaveNotiConfUseCase
 import com.jdccmobile.memento.domain.room.DelAllFavQuotesUseCase
