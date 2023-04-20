@@ -14,7 +14,6 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/dancing_regular"
         android:text="@string/title_app"
-        android:textColor="@color/textColor"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +26,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/dancing_regular"
         android:text="@string/menu"
-        android:textColor="@color/textColor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +73,6 @@
                         android:fontFamily="@font/varela"
                         android:gravity="center"
                         android:text="@string/settings"
-                        android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -86,7 +83,6 @@
                 android:id="@+id/cvFavorites"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="16dp">
 
@@ -109,7 +105,6 @@
                         android:fontFamily="@font/varela"
                         android:gravity="center"
                         android:text="@string/favorites"
-                        android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -123,7 +118,6 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/varela"
             android:text="@string/quotes_to_show"
-            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -158,7 +152,6 @@
                         android:fontFamily="@font/varela"
                         android:gravity="center"
                         android:text="@string/stoics"
-                        android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -168,7 +161,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="16dp">
 
@@ -191,7 +183,6 @@
                         android:fontFamily="@font/varela"
                         android:gravity="center"
                         android:text="@string/coming_soon"
-                        android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 

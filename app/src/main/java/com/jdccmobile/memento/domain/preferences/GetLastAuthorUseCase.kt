@@ -9,5 +9,5 @@ class GetLastAuthorUseCase @Inject constructor(
     private val dataStoreRepository: DataStoreRepository
 ) {
 
-    suspend operator fun invoke() : String? = dataStoreRepository.getString(AUTHOR).orEmpty()
+    suspend operator fun invoke() : String = dataStoreRepository.getString(AUTHOR).orEmpty()
 }

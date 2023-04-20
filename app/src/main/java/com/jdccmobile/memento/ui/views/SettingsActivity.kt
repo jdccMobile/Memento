@@ -59,7 +59,7 @@ class SettingsActivity : AppCompatActivity() {
 
         btDelete.setOnClickListener {
             viewModel.deleteAllFavQuotes()
-            Toast.makeText(this, "Citas favoritas borradas", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.delete_quotes_realized), Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
 

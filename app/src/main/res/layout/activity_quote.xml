@@ -14,7 +14,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/dancing_regular"
         android:text="@string/title_app"
-        android:textColor="@color/textColor"
+
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/dancing_regular"
         android:text="@string/quotes"
-        android:textColor="@color/textColor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +58,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/varela"
                 android:gravity="center"
-                android:textColor="@color/textColor"
                 android:textSize="26sp"
                 tools:text="¿Es posible estar libre de cometer errores? De ninguna manera, pero si es posible ser una persona que se esfuerza para evitarlos" />
 
@@ -76,7 +74,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/varela"
-                android:textColor="@color/textColor"
                 android:textSize="24sp"
                 android:textStyle="italic"
                 tools:text="Epiceto" />
@@ -95,7 +92,8 @@
         android:src="@drawable/ic_share"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/ivHome"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/share" />
 
     <ImageButton
         android:id="@+id/ivHome"
@@ -106,7 +104,8 @@
         android:src="@drawable/ic_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/home" />
 
     <ImageButton
         android:id="@+id/isFav"
@@ -117,7 +116,8 @@
         android:src="@drawable/ic_heart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivHome" />
+        app:layout_constraintStart_toEndOf="@id/ivHome"
+        android:contentDescription="@string/favorites" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@
             android:gravity="center"
             android:textColor="@color/textColor"
             android:textSize="18sp"
+            tools:ignore="TextContrastCheck"
             tools:text="¿Es posible estar libre de cometer errores? De ninguna manera, pero si es posible ser una persona que se esfuerza para evitarlos" />
 
         <com.google.android.material.divider.MaterialDivider
