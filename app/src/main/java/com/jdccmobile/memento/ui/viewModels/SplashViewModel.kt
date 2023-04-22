@@ -1,22 +1,30 @@
 package com.jdccmobile.memento.ui.viewModels
 
+import android.app.AlarmManager
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jdccmobile.memento.R
+import com.jdccmobile.memento.core.AlarmNotification
 import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.domain.firestore.GetRandomQuoteUseCase
 import com.jdccmobile.memento.domain.preferences.*
+import com.jdccmobile.memento.ui.views.SplashActivity.Companion.MY_CHANNEL_ID
+import com.jdccmobile.memento.ui.views.SplashActivity.Companion.NOTIFICATION_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Calendar
 import javax.inject.Inject
-
-
 
 
 @HiltViewModel
@@ -37,6 +45,7 @@ class SplashViewModel @Inject constructor(
     val quotesModel = MutableLiveData<QuotesModel>()
 
     fun onCreateView() {
+        createChannel()
         val currentDay = LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("D")).toInt()
         val lastDay = getLastDay()
@@ -67,7 +76,10 @@ class SplashViewModel @Inject constructor(
         val timer = object : CountDownTimer(4000, 1000) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
-                val quote = QuotesModel(application.applicationContext.getString(R.string.no_internet_connection), "Aristoteles")
+                val quote = QuotesModel(
+                    application.applicationContext.getString(R.string.no_internet_connection),
+                    "Aristoteles"
+                )
                 quotesModel.postValue(quote)
             }
         }
@@ -85,6 +97,21 @@ class SplashViewModel @Inject constructor(
                 quotesModel.postValue(quote)
             }
         }
+    }
+
+    // For versions > Android 8
+    private fun createChannel() {
+        val channel = NotificationChannel(
+            MY_CHANNEL_ID,
+            "MyChannel26",
+            NotificationManager.IMPORTANCE_DEFAULT
+        ).apply {
+            description = "Channel for APIs > 26"
+        }
+        val notificationManager: NotificationManager =
+            application.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        notificationManager.createNotificationChannel(channel)
     }
 
 
@@ -123,4 +150,33 @@ class SplashViewModel @Inject constructor(
 
 
     private fun getLastAuthor(): String = runBlocking { getLastAuthorUseCase() }
+
+
+    fun createDailyNotification() {
+
+        val intent = Intent(application.applicationContext, AlarmNotification::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            application.applicationContext,
+            NOTIFICATION_ID,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 9)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+        }
+
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
+
+    }
+
+
 }

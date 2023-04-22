@@ -7,19 +7,22 @@ Favoritas
 Splash screen
     Quitar los runblock para que no bloqueen el hilo principal
 
-Limpieza General
-    compartir valores de las vistas
-    Quitar animacion del recycler view
+General
+    Ocultar keys de los ads como en el video
 
 Subir play store
+    quitar firebase notifications
+
+    ofuscacion
     mirar aso
     subir play store
 
 
 **** Siguiente version ****
+    TimePicker para que el usuario elija la hora de la notifiacion
     Renovar iconos pantalla de menu
     Hacer boton de estoicas clicables y cambiar color (2.0)
     Cambiar diseño tal vez (2.0)
     Rotacion de la cardview de citas para que muestre una explicacion
-
-
+    Compartir valores de las vistas
+    Quitar animacion del recycler view
