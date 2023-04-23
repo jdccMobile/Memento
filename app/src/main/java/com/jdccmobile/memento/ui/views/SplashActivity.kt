@@ -3,6 +3,7 @@ package com.jdccmobile.memento.ui.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.jdccmobile.memento.databinding.ActivitySplashBinding
@@ -43,7 +44,9 @@ class SplashActivity : AppCompatActivity() {
 
 
     private fun navigateToQuotes() {
+        Log.i(TAG, "Navegacion")
         viewModel.quotesModel.observe(this){ quotesModel ->
+            Log.i(TAG, "quotos model $quotesModel")
             if(quotesModel != null){
                 val intent = Intent(this, QuotesActivity::class.java)
                 intent.putExtra(QUOTE_INTENT, quotesModel.quote)
@@ -56,6 +59,7 @@ class SplashActivity : AppCompatActivity() {
 
 
     private fun sendDailyNotification() {
+        Log.i(TAG, "notificacion")
         viewModel.createDailyNotification()
     }
 
