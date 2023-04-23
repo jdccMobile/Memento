@@ -1,14 +1,7 @@
-Splash screen
-    Quitar los runblock para que no bloqueen el hilo principal
-
-General
-    Ocultar keys de los ads como en el video
-
 Subir play store
     ofuscacion
     mirar aso
     subir play store
-
 
 **** Siguiente version ****
     TimePicker para que el usuario elija la hora de la notifiacion
@@ -18,3 +11,4 @@ Subir play store
     Rotacion de la cardview de citas para que muestre una explicacion
     Compartir valores de las vistas
     Quitar animacion del recycler view
+    Quitar los runblock para que no bloqueen el hilo principal
