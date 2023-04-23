@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.jdccmobile.memento"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -52,6 +52,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // Splash screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
     // View model
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
 
@@ -62,6 +65,24 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
-    // Firestore
+    // Firebase
     implementation 'com.google.firebase:firebase-firestore-ktx:24.4.5'
+    implementation 'com.google.firebase:firebase-messaging:23.1.2'
+
+    // Datastore
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+
+    // Coroutines
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
+
+    // Room
+    implementation "androidx.room:room-ktx:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
+
+    // AddMob
+    implementation 'com.google.android.gms:play-services-ads:22.0.0'
+
 }
