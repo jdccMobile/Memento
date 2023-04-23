@@ -1,12 +1,9 @@
 package com.jdccmobile.memento.data.room
 
-import android.util.Log
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.jdccmobile.memento.ui.views.SplashActivity
 
 @Dao
 interface QuoteDao {
@@ -19,4 +16,7 @@ interface QuoteDao {
 
     @Query("DELETE FROM fav_quotes")
     suspend fun delAllFavQuotes()
+
+    @Query("DELETE FROM fav_quotes WHERE quote = :quote")
+    suspend fun delFavQuote(quote : String)
 }

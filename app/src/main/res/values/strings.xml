@@ -13,9 +13,11 @@
     <string name="delete_favorite_quotes">Borrar citas favoritas</string>
     <string name="delete">Borrar</string>
     <string name="del_fav_description">Borra todas las citas guardadas ¡Atención! No se podrán recuperar</string>
-    <string name="delete_advise">¿Estas seguro que quieres borrar todas tus citas? No las podrás recuperar en un futuro</string>
+    <string name="delete_all_fav_advise">¿Estas seguro que quieres borrar todas tus citas? No las podrás recuperar en un futuro</string>
+    <string name="delete_advise">¿Estás seguro que quires borrar esta cita?</string>
     <string name="cancel">Cancelar</string>
     <string name="delete_quotes_realized">Citas favoritas borradas</string>
+    <string name="delete_quote_realized">Cita favorita borrada</string>
     <string name="save_quote_realized">Citas guardada en favoritos</string>
     <string name="discover_new_cotes">Descubre más citas diarias en Memento (añadir enlance)</string>
     <string name="as_he_said">Como dijo</string>
