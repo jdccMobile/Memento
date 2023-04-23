@@ -37,6 +37,7 @@ class SplashViewModel @Inject constructor(
     private val saveLastDayUseCase: SaveLastDayUseCase,
     private val getLastDayUseCase: GetLastDayUseCase,
     private val saveFavCurrentQuoteUC: SaveFavCurrentQuoteUC,
+    private val getNotiConfUseCase: GetNotiConfUseCase,
     private val application: Application
 ) : ViewModel() {
 
@@ -153,30 +154,34 @@ class SplashViewModel @Inject constructor(
 
 
     fun createDailyNotification() {
+        val notificationConf = getNotiConf()
+        if (notificationConf) {
+            val intent = Intent(application.applicationContext, AlarmNotification::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(
+                application.applicationContext,
+                NOTIFICATION_ID,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
 
-        val intent = Intent(application.applicationContext, AlarmNotification::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(
-            application.applicationContext,
-            NOTIFICATION_ID,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        )
+            val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val calendar = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, 9)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+            }
 
-        val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val calendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 9)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                calendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY,
+                pendingIntent
+            )
         }
-
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            pendingIntent
-        )
-
     }
+
+
+    private fun getNotiConf(): Boolean = runBlocking { getNotiConfUseCase()!! }
 
 
 }

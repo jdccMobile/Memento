@@ -24,7 +24,7 @@
         android:layout_marginHorizontal="16dp"
         android:gravity="center"
         android:textColor="@color/black"
-        android:text="@string/delete_advise"
+        android:text="@string/delete_all_fav_advise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivDelete" />
