@@ -185,7 +185,7 @@ class SplashViewModel @Inject constructor(
 
             val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val calendar = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, 18)
+                set(Calendar.HOUR_OF_DAY, 12)
                 set(Calendar.MINUTE, 0)
                 set(Calendar.SECOND, 0)
             }

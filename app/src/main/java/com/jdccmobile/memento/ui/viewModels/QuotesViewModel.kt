@@ -33,7 +33,7 @@ class QuotesViewModel @Inject constructor(
     }
 
 
-    private fun getIsCurrentFav(){
+    fun getIsCurrentFav(){
         viewModelScope.launch {
             isFavorite.postValue(getFavCurrentQuoteUC())
         }
