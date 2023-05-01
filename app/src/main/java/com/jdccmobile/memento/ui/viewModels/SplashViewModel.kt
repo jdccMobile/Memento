@@ -38,7 +38,6 @@ class SplashViewModel @Inject constructor(
     private val saveLastAuthorUseCase: SaveLastAuthorUseCase,
     private val saveLastDayUseCase: SaveLastDayUseCase,
     private val getLastDayUseCase: GetLastDayUseCase,
-    private val saveFavCurrentQuoteUC: SaveFavCurrentQuoteUC,
     private val saveNotiConfUseCase: SaveNotiConfUseCase,
     private val getNotiConfUseCase: GetNotiConfUseCase,
     private val application: Application
@@ -61,7 +60,6 @@ class SplashViewModel @Inject constructor(
             if (currentDay > lastDay) {
                 Log.i(SplashActivity.TAG, "Nueva cita")
                 saveLastDay(currentDay)
-                resetFavIcon()
                 getQuoteFirestore()
 
             } else {
@@ -73,7 +71,6 @@ class SplashViewModel @Inject constructor(
             // First time open the app
             Log.i(SplashActivity.TAG, "Nueva cita 2")
             saveLastDay(currentDay)
-            resetFavIcon()
             setValueNotiConf()
             getQuoteFirestore()
 
@@ -126,12 +123,6 @@ class SplashViewModel @Inject constructor(
         notificationManager.createNotificationChannel(channel)
     }
 
-
-    private fun resetFavIcon() {
-        viewModelScope.launch {
-            saveFavCurrentQuoteUC(false)
-        }
-    }
 
     private fun setValueNotiConf() {
         viewModelScope.launch {

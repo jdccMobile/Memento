@@ -62,7 +62,7 @@
                 android:fontFamily="@font/varela"
                 android:gravity="center"
                 android:textSize="22sp"
-                tools:text="¿Es posible estar libre de cometer errores? De ninguna manera, pero si es posible ser una persona que se esfuerza para evitarlos" />
+                tools:text=" das asdf sd sadf asdfas asdf asdfasdf asdf sadff sa dfsdf asdf asdfas dfsadf  sadf asd asdf asdf sadf sdf sadf asdfas dfasd fasdf asdf sadf as asfasdfasdfasdfasdfasdCada vez que estés a punto de señalar un defecto en otra persona, hazte la siguiente pregunta: ¿Qué defecto en mí se parece al que estoy a punto de criticar?" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="130dp"

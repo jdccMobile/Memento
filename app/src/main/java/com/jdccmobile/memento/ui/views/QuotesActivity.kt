@@ -17,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class QuotesActivity : AppCompatActivity() {
 
-    private var isFavorite = false
     private var quote = ""
     private var author = ""
     private val viewModel by viewModels<QuotesViewModel>()
@@ -33,9 +32,7 @@ class QuotesActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        viewModel.onCreateView()
         initQuote()
-        initFav()
         loadAds()
 
     }
@@ -49,21 +46,11 @@ class QuotesActivity : AppCompatActivity() {
     }
 
 
-    private fun initFav() {
-        viewModel.isFavorite.observe(this) { isFav ->
-            isFavorite = isFav
-            if (isFav) binding.isFav.setImageResource(R.drawable.ic_red_heart)
-            //else binding.isFav.setImageResource(R.drawable.ic_heart)
-        }
-    }
-
-
     private fun initListener() {
         binding.ivShare.setOnClickListener { shareQuote() }
         binding.ivHome.setOnClickListener { navigateToMenu() }
         binding.isFav.setOnClickListener {
-            changeHeartColor()
-            viewModel.getIsCurrentFav()
+            saveQuoteInFav()
         }
     }
 
@@ -87,14 +74,9 @@ class QuotesActivity : AppCompatActivity() {
     }
 
 
-    private fun changeHeartColor() {
-        if (!isFavorite) {
-            isFavorite = true
-            binding.isFav.setImageResource(R.drawable.ic_red_heart)
-            viewModel.saveIsCurrentFav()
+    private fun saveQuoteInFav() {
             viewModel.saveFavQuote(QuotesModel(binding.tvQuote.text.toString(), binding.tvAuthor.text.toString()))
             Toast.makeText(this, getString(R.string.save_quote_realized), Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun loadAds() {

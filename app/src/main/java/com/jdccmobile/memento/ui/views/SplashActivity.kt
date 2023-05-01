@@ -20,7 +20,6 @@ class SplashActivity : AppCompatActivity() {
         const val AUTHOR = "AUTHOR"
         const val AUTHOR_INTENT = "author"
         const val LAST_DAY = "LAST_DAY"
-        const val LAST_QUOTE_FAV = "LAST_QUOTE_FAV"
         const val NOTIFICATION_ENABLED = "NOTIFICATION_ENABLED"
         const val MY_CHANNEL_ID = "myChannel"
         const val NOTIFICATION_ID = 1

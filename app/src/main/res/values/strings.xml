@@ -18,13 +18,11 @@
     <string name="cancel">Cancelar</string>
     <string name="delete_quotes_realized">Citas favoritas borradas</string>
     <string name="delete_quote_realized">Cita favorita borrada</string>
-    <string name="save_quote_realized">Citas guardada en favoritos</string>
-    <string name="discover_new_cotes">Descubre más citas diarias en Memento (añadir enlance)</string>
+    <string name="save_quote_realized">Cita guardada en favoritos</string>
+    <string name="discover_new_cotes">Descubre más citas diarias en Memento https://play.google.com/store/apps/details?id=com.jdccmobile.memento</string>
     <string name="as_he_said">Como dijo</string>
     <string name="no_internet_connection">Sin conexión a internet</string>
-    <string name="no_saved_quotes">No ha citas favoritas guardadas</string>
+    <string name="no_saved_quotes">No hay citas favoritas guardadas</string>
     <string name="share">Compartir</string>
     <string name="home">home</string>
-
-
 </resources>
