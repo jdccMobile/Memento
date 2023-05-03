@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.google.android.gms.ads.AdRequest
 import com.jdccmobile.memento.R
 import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.databinding.ActivityQuoteBinding
@@ -16,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class QuotesActivity : AppCompatActivity() {
 
-    private var isFavorite = false
     private var quote = ""
     private var author = ""
     private val viewModel by viewModels<QuotesViewModel>()
@@ -32,9 +32,9 @@ class QuotesActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        viewModel.onCreateView()
         initQuote()
-        initFav()
+        loadAds()
+
     }
 
 
@@ -46,23 +46,17 @@ class QuotesActivity : AppCompatActivity() {
     }
 
 
-    private fun initFav() {
-        viewModel.isFavorite.observe(this){ isFav ->
-            isFavorite = isFav
-            if(isFav) binding.isFav.setImageResource(R.drawable.ic_red_heart)
-            else binding.isFav.setImageResource(R.drawable.ic_heart)
-        }
-    }
-
-
     private fun initListener() {
         binding.ivShare.setOnClickListener { shareQuote() }
         binding.ivHome.setOnClickListener { navigateToMenu() }
-        binding.isFav.setOnClickListener { changeHeartColor() }
+        binding.isFav.setOnClickListener {
+            saveQuoteInFav()
+        }
     }
 
     private fun shareQuote() {
-        val textToShare = getString(R.string.as_he_said) + " $author: '$quote'. " + getString(R.string.discover_new_cotes)
+        val textToShare =
+            getString(R.string.as_he_said) + " $author: '$quote'. " + getString(R.string.discover_new_cotes)
         val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, textToShare)
@@ -80,13 +74,14 @@ class QuotesActivity : AppCompatActivity() {
     }
 
 
-    private fun changeHeartColor() {
-        if(!isFavorite){
-            viewModel.saveIsCurrentFav()
+    private fun saveQuoteInFav() {
             viewModel.saveFavQuote(QuotesModel(binding.tvQuote.text.toString(), binding.tvAuthor.text.toString()))
-            binding.isFav.setImageResource(R.drawable.ic_red_heart)
             Toast.makeText(this, getString(R.string.save_quote_realized), Toast.LENGTH_SHORT).show()
-        }
+    }
+
+    private fun loadAds() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adQuote.loadAd(adRequest)
     }
 
 }

@@ -14,5 +14,5 @@
 .cxx
 local.properties
 google-services.json
-roadmap
+app/src/main/java/com/jdccmobile/roadmap
 app/src/main/res/values/secrets.xml

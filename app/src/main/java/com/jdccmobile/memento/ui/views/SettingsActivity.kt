@@ -49,7 +49,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun createDeleteDialog() {
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this, R.style.AlertDialogStyle)
         val customDialog = LayoutInflater.from(this).inflate(R.layout.del_fav_quotes_dialog, null)
         builder.setView(customDialog)
         val dialog = builder.create()

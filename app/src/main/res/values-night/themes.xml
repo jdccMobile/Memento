@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Memento" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -16,7 +16,7 @@
 
     </style>
 
-    <!--    Splash screen-->
+    <!-- Splash screen-->
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/bg_color_start</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher</item>
@@ -24,5 +24,10 @@
         <item name="postSplashScreenTheme">@style/Theme.Memento</item>
     </style>
 
+    <!-- Delete alert dialog-->
+    <style name="AlertDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
 

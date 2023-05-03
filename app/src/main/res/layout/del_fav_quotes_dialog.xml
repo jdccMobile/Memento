@@ -10,12 +10,12 @@
         android:id="@+id/ivDelete"
         android:layout_width="wrap_content"
         android:layout_height="180dp"
+        android:contentDescription="@string/delete_favorite_quotes"
         android:padding="16dp"
         android:src="@drawable/im_delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/delete" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvInfoDelete"
@@ -23,14 +23,15 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:gravity="center"
-        android:textColor="@color/black"
         android:text="@string/delete_all_fav_advise"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivDelete" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btCancelDelete"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -38,14 +39,14 @@
         android:textColor="@color/bg_color_start"
         app:layout_constraintEnd_toStartOf="@id/btDelete"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvInfoDelete"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvInfoDelete" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/red"
         android:text="@string/delete"
         android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"

@@ -8,6 +8,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,6 +17,7 @@ import com.jdccmobile.memento.core.AlarmNotification
 import com.jdccmobile.memento.data.model.QuotesModel
 import com.jdccmobile.memento.domain.firestore.GetRandomQuoteUseCase
 import com.jdccmobile.memento.domain.preferences.*
+import com.jdccmobile.memento.ui.views.SplashActivity
 import com.jdccmobile.memento.ui.views.SplashActivity.Companion.MY_CHANNEL_ID
 import com.jdccmobile.memento.ui.views.SplashActivity.Companion.NOTIFICATION_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,7 +38,7 @@ class SplashViewModel @Inject constructor(
     private val saveLastAuthorUseCase: SaveLastAuthorUseCase,
     private val saveLastDayUseCase: SaveLastDayUseCase,
     private val getLastDayUseCase: GetLastDayUseCase,
-    private val saveFavCurrentQuoteUC: SaveFavCurrentQuoteUC,
+    private val saveNotiConfUseCase: SaveNotiConfUseCase,
     private val getNotiConfUseCase: GetNotiConfUseCase,
     private val application: Application
 ) : ViewModel() {
@@ -56,17 +58,20 @@ class SplashViewModel @Inject constructor(
         // One quote per day
         if (lastDay != null) {
             if (currentDay > lastDay) {
+                Log.i(SplashActivity.TAG, "Nueva cita")
                 saveLastDay(currentDay)
-                resetFavIcon()
                 getQuoteFirestore()
 
             } else {
+                Log.i(SplashActivity.TAG, "Vieja cita")
                 val quote = QuotesModel(getLastQuote(), getLastAuthor())
                 quotesModel.postValue(quote)
             }
         } else {
+            // First time open the app
+            Log.i(SplashActivity.TAG, "Nueva cita 2")
             saveLastDay(currentDay)
-            resetFavIcon()
+            setValueNotiConf()
             getQuoteFirestore()
 
         }
@@ -90,6 +95,7 @@ class SplashViewModel @Inject constructor(
 
     private fun getQuoteFirestore() {
         viewModelScope.launch {
+            Log.i(SplashActivity.TAG, "Pillar cita firebase")
             val quote: QuotesModel? = getRandomQuoteUseCase()
             if (quote != null) {
                 saveLastQuote(quote.quote)
@@ -102,6 +108,8 @@ class SplashViewModel @Inject constructor(
 
     // For versions > Android 8
     private fun createChannel() {
+
+        Log.i(SplashActivity.TAG, "Crear canal notifiaciones")
         val channel = NotificationChannel(
             MY_CHANNEL_ID,
             "MyChannel26",
@@ -116,9 +124,9 @@ class SplashViewModel @Inject constructor(
     }
 
 
-    private fun resetFavIcon() {
+    private fun setValueNotiConf() {
         viewModelScope.launch {
-            saveFavCurrentQuoteUC(false)
+            saveNotiConfUseCase(true)
         }
     }
 
@@ -154,8 +162,10 @@ class SplashViewModel @Inject constructor(
 
 
     fun createDailyNotification() {
+        Log.i(SplashActivity.TAG, "crear notificacion")
         val notificationConf = getNotiConf()
-        if (notificationConf) {
+        Log.i(SplashActivity.TAG, "valor notifiacion $notificationConf")
+        if (notificationConf != null && notificationConf == true) {
             val intent = Intent(application.applicationContext, AlarmNotification::class.java)
             val pendingIntent = PendingIntent.getBroadcast(
                 application.applicationContext,
@@ -166,7 +176,7 @@ class SplashViewModel @Inject constructor(
 
             val alarmManager = application.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val calendar = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, 17)
+                set(Calendar.HOUR_OF_DAY, 12)
                 set(Calendar.MINUTE, 0)
                 set(Calendar.SECOND, 0)
             }
@@ -181,7 +191,7 @@ class SplashViewModel @Inject constructor(
     }
 
 
-    private fun getNotiConf(): Boolean = runBlocking { getNotiConfUseCase()!! }
+    private fun getNotiConf(): Boolean? = runBlocking { getNotiConfUseCase() }
 
 
 }
